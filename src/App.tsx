@@ -11,19 +11,18 @@ import {
   Cpu, 
   Network, 
   FileText, 
-  GraduationCap,
   ArrowUpRight,
   ExternalLink,
   Download,
   Mail,
   Linkedin,
-  Github,
-  Verified,
   Menu,
   X
 } from 'lucide-react';
 
 type Screen = 'home' | 'about' | 'education' | 'projects' | 'documents' | 'contact';
+
+const base = import.meta.env.BASE_URL;
 
 export default function App() {
   const [activeScreen, setActiveScreen] = useState<Screen>('home');
@@ -106,8 +105,8 @@ export default function App() {
             <div className="mt-auto space-y-6">
               <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.2em]">Contact Information</p>
               <div className="flex flex-col gap-4">
-                <a href="mailto:disboygamz@gmail.com" className="text-sm font-medium flex items-center gap-2">
-                  <Mail size={16} /> disboygamz@gmail.com
+                <a href="mailto:virgilcarpenter4005@gmail.com" className="text-sm font-medium flex items-center gap-2">
+                  <Mail size={16} /> virgilcarpenter4005@gmail.com
                 </a>
                 <a href="https://www.linkedin.com/in/virgilcarpenter/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium flex items-center gap-2">
                   <Linkedin size={16} /> LinkedIn Profile
@@ -149,7 +148,7 @@ export default function App() {
             </p>
           </div>
           <div className="flex gap-8 text-[11px] font-medium uppercase tracking-widest text-secondary items-center">
-            <a href="mailto:disboygamz@gmail.com" className="hover:text-primary underline underline-offset-4 transition-colors flex items-center gap-2">
+            <a href="mailto:virgilcarpenter4005@gmail.com" className="hover:text-primary underline underline-offset-4 transition-colors flex items-center gap-2">
               <Mail size={12} className="shrink-0" />
               Email
             </a>
@@ -240,7 +239,7 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
               <div>
                 <span className="text-[12px] font-label text-secondary bg-secondary-fixed px-3 py-1 rounded-full mb-4 inline-block font-bold">PROGRAMMING</span>
                 <h3 className="text-2xl font-bold text-primary mb-4">Cisco Python Essentials 1</h3>
-                <p className="text-on-surface-variant text-sm"> mastery of Python syntax, data structures, and algorithmic logic for automation and security scripting.</p>
+                <p className="text-on-surface-variant text-sm">Mastery of Python syntax, data structures, and algorithmic logic for automation and security scripting.</p>
               </div>
               <div className="space-y-4 pt-6">
                 <div className="flex items-center gap-3">
@@ -310,7 +309,7 @@ function AboutScreen() {
     <div className="max-w-7xl mx-auto px-6 py-20">
       <header className="flex flex-col md:flex-row gap-12 items-center md:items-start mb-16">
         <div className="w-48 h-48 rounded-xl overflow-hidden bg-surface-container border border-outline-variant shadow-lg">
-          <img src="/aboutme2.jpg" alt="Virgil Carpenter" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          <img src={`${base}aboutme2.jpg`} alt="Virgil Carpenter" className="w-full h-full object-cover" />
         </div>
         <div className="text-center md:text-left">
           <h1 className="text-5xl font-bold text-primary mb-4 text-center md:text-left">About Me</h1>
@@ -446,11 +445,11 @@ function EducationScreen() {
              <div className="ml-6 space-y-8">
                <div className="bg-white border border-outline-variant p-10 flex flex-col md:flex-row gap-10">
                   <div className="w-full md:w-64 aspect-[4/3] bg-surface-container relative rounded-lg overflow-hidden border border-outline-variant shadow-sm group">
-                    <img src="/certificate.jpg" alt="Python Essentials 1 Certificate" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    <img src={`${base}certificate.jpg`} alt="Python Essentials 1 Certificate" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-primary/5"></div>
                     <a 
-                      href="/certificate.pdf" 
-                      target="_blank" 
+                      href={`${base}certificate.pdf`}
+                      target="_blank"
                       className="absolute bottom-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full text-primary shadow-lg hover:bg-primary hover:text-white transition-all transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
                     >
                       <Download size={18} />
@@ -465,7 +464,7 @@ function EducationScreen() {
                       <span className="bg-primary-container text-on-primary-container px-3 py-1 font-bold text-[10px] uppercase tracking-widest rounded-full">Badge Earned</span>
                     </div>
                     <p className="text-sm text-on-surface-variant leading-relaxed">
-                      As part of my preparation for a career in cybersecurity and computer science, I completed Cisco Networking Academy’s Python Essentials 1 course to build a strong foundation in programming. Throughout the course, I learned Python syntax, variables, data types, loops, conditionals, and functions, while gaining hands-on experience writing and debugging scripts, performing input/output operations, and applying logical problem-solving to coding exercises. Successfully earning this certificate demonstrates my ability to write Python code, solve programming challenges, and apply core programming concepts, skills that strengthen my technical toolkit for future cybersecurity and computer science projects.
+                      As part of my preparation for a career in cybersecurity and computer science, I completed Cisco Networking Academy's Python Essentials 1 course to build a strong foundation in programming. Throughout the course, I learned Python syntax, variables, data types, loops, conditionals, and functions, while gaining hands-on experience writing and debugging scripts, performing input/output operations, and applying logical problem-solving to coding exercises. Successfully earning this certificate demonstrates my ability to write Python code, solve programming challenges, and apply core programming concepts, skills that strengthen my technical toolkit for future cybersecurity and computer science projects.
                     </p>
                   </div>
                </div>
@@ -644,8 +643,8 @@ function DocumentsScreen() {
       subtitle: 'Cybersecurity & Tech Specialist',
       date: 'Updated April 2026',
       size: '72 KB',
-      preview: '/resume.jpg',
-      pdf: '/resume.pdf',
+      preview: `${base}resume.jpg`,
+      pdf: `${base}resume.pdf`,
       fallback: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop',
       details: [
         'Security+ 701 Certified',
@@ -659,8 +658,8 @@ function DocumentsScreen() {
       subtitle: 'Application for Computer Aide',
       date: 'April 2026',
       size: '54 KB',
-      preview: '/coverletter.jpg',
-      pdf: '/coverletter.pdf',
+      preview: `${base}coverletter.jpg`,
+      pdf: `${base}coverletter.pdf`,
       fallback: 'https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=800&auto=format&fit=crop',
       details: [
         'Tailored for NSA',
@@ -674,8 +673,8 @@ function DocumentsScreen() {
       subtitle: 'Technical Certification (701)',
       date: 'Earned April 2026',
       size: '190 KB',
-      preview: '/sec+.jpg',
-      pdf: '/sec+.pdf',
+      preview: `${base}sec+.jpg`,
+      pdf: `${base}sec+.pdf`,
       fallback: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop',
       details: [
         'Network Security',
@@ -689,8 +688,8 @@ function DocumentsScreen() {
       subtitle: 'Cisco Networking Academy',
       date: 'Earned April 2026',
       size: '1.2 MB',
-      preview: '/certificate.jpg',
-      pdf: '/certificate.pdf',
+      preview: `${base}certificate.jpg`,
+      pdf: `${base}certificate.pdf`,
       fallback: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
       details: [
         'Programming Fundamentals',
@@ -721,7 +720,7 @@ function DocumentsScreen() {
                  <span className="bg-secondary-container text-on-secondary-container px-3 py-1 font-bold text-[10px] uppercase tracking-tighter rounded">Accepted</span>
                </div>
                <p className="text-sm text-on-surface-variant leading-relaxed">
-                 Selected for a competitive leadership program aimed at the area’s brightest future leaders. The academy focuses on developing community awareness, professional business etiquette, and advanced leadership skills through a structured curriculum including financial literacy, technology, healthcare, and government engagement.
+                 Selected for a competitive leadership program aimed at the area's brightest future leaders. The academy focuses on developing community awareness, professional business etiquette, and advanced leadership skills through a structured curriculum including financial literacy, technology, healthcare, and government engagement.
                </p>
              </div>
              <div className="flex justify-between items-center bg-surface-container/30 p-4 rounded border-l-4 border-primary">
@@ -754,7 +753,6 @@ function DocumentsScreen() {
         </div>
       </section>
 
-      {/* Improved Document Grid */}
       <h2 className="text-2xl font-bold text-primary mb-12 flex items-center gap-4">
         Official Files
         <div className="h-px bg-outline-variant flex-1"></div>
@@ -763,13 +761,11 @@ function DocumentsScreen() {
       <div className="grid lg:grid-cols-2 gap-12">
         {documents.map((doc) => (
           <div key={doc.id} className="bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition-all duration-500">
-             {/* Thumbnail / Image Preview */}
              <div className="w-full md:w-64 aspect-[3/4] bg-white relative overflow-hidden shrink-0 border-r border-outline-variant flex items-center justify-center">
                 <img 
                   src={doc.preview} 
                   alt={doc.title} 
                   className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700 relative z-10"
-                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
                     const fallback = (doc as any).fallback;
@@ -788,7 +784,6 @@ function DocumentsScreen() {
                </div>
              </div>
 
-             {/* Content */}
              <div className="flex-1 p-8 flex flex-col">
                 <div className="flex justify-between items-start mb-4">
                    <div>
@@ -851,10 +846,10 @@ function ContactScreen() {
             Email Address
           </h3>
           <a 
-            href="mailto:disboygamz@gmail.com" 
+            href="mailto:virgilcarpenter4005@gmail.com" 
             className="text-2xl font-medium text-on-surface hover:text-primary transition-colors break-all"
           >
-            disboygamz@gmail.com
+            virgilcarpenter4005@gmail.com
           </a>
           <p className="text-sm text-on-surface-variant mt-4 leading-relaxed">
             For professional inquiries, project proposals, or technical consultations. I typically respond within 24-48 hours.
