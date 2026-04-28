@@ -497,7 +497,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5">
             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop" alt="Server rack" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img src="serverrack.jpg" alt="Server rack" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
                {['NETWORK TROUBLESHOOTING', 'PXE BOOTING', 'WDS', 'OS DEPLOYMENT'].map(tag => (
@@ -556,7 +556,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5 lg:order-last">
              <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop" alt="AD Management" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="activedirectory.jpg" alt="AD Management" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
              </div>
              <div className="flex flex-wrap gap-2">
                 {['ACTIVE DIRECTORY', 'POWERSHELL', 'VIRTUALBOX'].map(tag => (
@@ -599,7 +599,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5">
              <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=1200&auto=format&fit=crop" alt="Network Lab" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="fiberoptic.jpg" alt="Network Lab" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
              </div>
              <div className="flex flex-wrap gap-2">
                 {['pfSense', 'IDS/IPS', 'NETWORK SEGMENTATION', 'VIRTUALIZATION'].map(tag => (
