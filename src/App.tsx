@@ -476,7 +476,7 @@ function EducationScreen() {
   );
 }
 
-function function function ProjectsScreen() {
+function ProjectsScreen() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20">
       <header className="max-w-3xl mb-20">
