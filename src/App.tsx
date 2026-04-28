@@ -476,7 +476,7 @@ function EducationScreen() {
   );
 }
 
-function ProjectsScreen() {
+function function ProjectsScreen() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20">
       <header className="max-w-3xl mb-20">
@@ -497,7 +497,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5">
             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src="/public/serverrack.jpg" alt="Server rack" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img src={`${base}serverrack.jpg`} alt="Server rack" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
                {['NETWORK TROUBLESHOOTING', 'PXE BOOTING', 'WDS', 'OS DEPLOYMENT'].map(tag => (
@@ -543,6 +543,96 @@ function ProjectsScreen() {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Project 2 */}
+        <section className="grid lg:grid-cols-12 gap-12 items-start pt-20 border-t border-outline-variant/30">
+          <div className="lg:col-span-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
+              <h2 className="text-3xl font-bold text-primary">Enterprise Active Directory Lab</h2>
+              <span className="text-sm font-bold text-secondary-fixed bg-secondary-container px-3 py-1 rounded">APRIL 2026</span>
+            </div>
+            <div className="h-1 w-20 bg-primary mb-12"></div>
+          </div>
+          <div className="lg:col-span-5 lg:order-last">
+             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <img src={`${base}activedirectory.jpg`} alt="AD Management" className="w-full h-full object-cover" />
+             </div>
+             <div className="flex flex-wrap gap-2">
+                {['ACTIVE DIRECTORY', 'POWERSHELL', 'VIRTUALBOX'].map(tag => (
+                  <span key={tag} className="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] font-bold tracking-widest">{tag}</span>
+                ))}
+             </div>
+          </div>
+          <div className="lg:col-span-7 space-y-8">
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
+               <p className="text-on-surface-variant">I needed real enterprise identity management experience but had no access to a corporate network environment.</p>
+             </div>
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Action</h3>
+               <p className="text-on-surface-variant">I designed and built a realistic lab to practice domain administration, access control, and policy management from scratch.</p>
+             </div>
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Result</h3>
+               <p className="text-on-surface-variant">I gained hands-on administration and troubleshooting skills equivalent to real-world sysadmin work, with a fully functional lab environment I can continue building on.</p>
+             </div>
+             <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
+               <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2 flex items-center gap-2">
+                 <Shield size={14} /> Reflection
+               </h4>
+               <p className="text-sm italic text-on-surface-variant leading-relaxed">
+                 "Building this from the ground up showed me that cybersecurity isn't just about blocking threats—it's about understanding the nervous system of an organization. Managing GPOs and user permissions in a sandbox environment gave me the patience to troubleshoot complex authentication chains and the foresight to maintain a 'least privilege' posture even in a lab setting."
+               </p>
+             </div>
+          </div>
+        </section>
+
+        {/* Project 3 */}
+        <section className="grid lg:grid-cols-12 gap-12 items-start pt-20 border-t border-outline-variant/30">
+          <div className="lg:col-span-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
+              <h2 className="text-3xl font-bold text-primary">Network & Systems Labs</h2>
+              <span className="text-sm font-bold text-secondary-fixed bg-secondary-container px-3 py-1 rounded">JANUARY 2026</span>
+            </div>
+            <div className="h-1 w-20 bg-primary mb-12"></div>
+          </div>
+          <div className="lg:col-span-5">
+             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                <img src={`${base}fiberobtic.jpg`} alt="Network Lab" className="w-full h-full object-cover" />
+             </div>
+             <div className="flex flex-wrap gap-2">
+                {['pfSense', 'IDS/IPS', 'NETWORK SEGMENTATION', 'VIRTUALIZATION'].map(tag => (
+                  <span key={tag} className="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] font-bold tracking-widest">{tag}</span>
+                ))}
+             </div>
+          </div>
+          <div className="lg:col-span-7 space-y-8">
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
+               <p className="text-on-surface-variant">Needed a secure, isolated environment to test advanced firewall rules and network security configurations without risking production data or personal hardware.</p>
+             </div>
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Action</h3>
+               <p className="text-on-surface-variant">Architected a multi-layered virtual network using pfSense for firewalling and Snort for Intrusion Detection (IDS). Configured VLANs to segment traffic and established strict rule-sets to monitor and block malicious patterns.</p>
+             </div>
+             <div className="star-border pl-6">
+               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Result</h3>
+               <p className="text-on-surface-variant">Successfully virtualized a complex network architecture that allows for rapid security prototyping. Validated the setup by simulating common network attacks and confirming the IDS triggered appropriate alerts and blocks.</p>
+             </div>
+             <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
+               <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2 flex items-center gap-2">
+                 <Shield size={14} /> Reflection
+               </h4>
+               <p className="text-sm italic text-on-surface-variant leading-relaxed">
+                 "This project reinforced that defense-in-depth is the only reliable security posture. Configured firewalls are the first line of defense, but the IDS/IPS layer provides the 'eyes' needed to understand what's actually hitting your perimeter. It also taught me that network segmentation is often the most effective way to limit a blast radius in any security event."
+               </p>
+             </div>
+          </div>
+        </section>
+      </div>
+  );
+}
         </section>
 
         {/* Project 2 */}
