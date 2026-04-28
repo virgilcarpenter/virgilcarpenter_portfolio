@@ -497,7 +497,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5">
             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-              <img src={`${base}serverrack.jpg`} alt="Server rack" className="w-full h-full object-cover" />
+              <img src={`${base}/public/serverrack.jpg`} alt="Server rack" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
                {['NETWORK TROUBLESHOOTING', 'PXE BOOTING', 'WDS', 'OS DEPLOYMENT'].map(tag => (
@@ -556,7 +556,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5 lg:order-last">
              <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src={`${base}activedirectory.jpg`} alt="AD Management" className="w-full h-full object-cover" />
+                <img src={`${base}/pubic/activedirectory.jpg`} alt="AD Management" className="w-full h-full object-cover" />
              </div>
              <div className="flex flex-wrap gap-2">
                 {['ACTIVE DIRECTORY', 'POWERSHELL', 'VIRTUALBOX'].map(tag => (
@@ -599,7 +599,7 @@ function ProjectsScreen() {
           </div>
           <div className="lg:col-span-5">
              <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src={`${base}fiberobtic.jpg`} alt="Network Lab" className="w-full h-full object-cover" />
+                <img src={`${base}/public/fiberobtic.jpg`} alt="Network Lab" className="w-full h-full object-cover" />
              </div>
              <div className="flex flex-wrap gap-2">
                 {['pfSense', 'IDS/IPS', 'NETWORK SEGMENTATION', 'VIRTUALIZATION'].map(tag => (
