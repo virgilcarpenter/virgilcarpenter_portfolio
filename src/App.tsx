@@ -555,7 +555,7 @@ function ProjectsScreen() {
     <div className="h-1 w-20 bg-primary mb-12"></div>
   </div>
 
-  {/* LEFT COLUMN: Text Content */}
+  {/* LEFT COLUMN: Your Original Text */}
   <div className="lg:col-span-7 space-y-8">
     <div className="star-border pl-6">
       <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
@@ -574,12 +574,12 @@ function ProjectsScreen() {
         <Shield size={14} /> Reflection
       </h4>
       <p className="text-sm italic text-on-surface-variant leading-relaxed">
-        "Building this from the ground up showed me that cybersecurity isn't just about blocking threats—it's about understanding the nervous system of an organization..."
+        "Building this from the ground up showed me that cybersecurity isn't just about blocking threats—it's about understanding the nervous system of an organization. Managing GPOs and user permissions in a sandbox environment gave me the patience to troubleshoot complex authentication chains and the foresight to maintain a 'least privilege' posture even in a lab setting."
       </p>
     </div>
   </div>
 
-  {/* RIGHT COLUMN: Slideshow */}
+  {/* RIGHT COLUMN: The Slideshow */}
   <div className="lg:col-span-5">
     <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-outline-variant mb-6 shadow-md">
       <iframe 
