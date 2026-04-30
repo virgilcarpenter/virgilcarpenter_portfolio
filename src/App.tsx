@@ -545,7 +545,7 @@ function ProjectsScreen() {
           </div>
         </section>
 
-       {/* Project 2 */}
+{/* Project 2 */}
 <section className="grid lg:grid-cols-12 gap-12 items-start pt-20 border-t border-outline-variant/30">
   <div className="lg:col-span-12">
     <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
@@ -555,9 +555,33 @@ function ProjectsScreen() {
     <div className="h-1 w-20 bg-primary mb-12"></div>
   </div>
 
-  {/* RIGHT COLUMN: Slide Embed replaces the Image */}
-  <div className="lg:col-span-5 lg:order-last">
-    <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-outline-variant mb-6 shadow-lg">
+  {/* LEFT COLUMN: Text Content */}
+  <div className="lg:col-span-7 space-y-8">
+    <div className="star-border pl-6">
+      <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
+      <p className="text-on-surface-variant">I needed real enterprise identity management experience but had no access to a corporate network environment.</p>
+    </div>
+    <div className="star-border pl-6">
+      <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Action</h3>
+      <p className="text-on-surface-variant">I designed and built a realistic lab to practice domain administration, access control, and policy management from scratch.</p>
+    </div>
+    <div className="star-border pl-6">
+      <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Result</h3>
+      <p className="text-on-surface-variant">I gained hands-on administration and troubleshooting skills equivalent to real-world sysadmin work, with a fully functional lab environment I can continue building on.</p>
+    </div>
+    <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
+      <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2 flex items-center gap-2">
+        <Shield size={14} /> Reflection
+      </h4>
+      <p className="text-sm italic text-on-surface-variant leading-relaxed">
+        "Building this from the ground up showed me that cybersecurity isn't just about blocking threats—it's about understanding the nervous system of an organization..."
+      </p>
+    </div>
+  </div>
+
+  {/* RIGHT COLUMN: Slideshow */}
+  <div className="lg:col-span-5">
+    <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-outline-variant mb-6 shadow-md">
       <iframe 
         src="https://docs.google.com/presentation/d/e/2PACX-1vTZeoJ1uNE4MmWnxxni_QvmFjfMtPd_U5ullYYLYAhhTtUKUPtxtBO7U2BrFtxjIPspc3DZe4LzDE6r/pubembed?start=false&loop=true&delayms=5000" 
         frameBorder="0" 
@@ -573,15 +597,6 @@ function ProjectsScreen() {
         <span key={tag} className="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] font-bold tracking-widest">{tag}</span>
       ))}
     </div>
-  </div>
-
-  {/* LEFT COLUMN: Situation, Action, Result */}
-  <div className="lg:col-span-7 space-y-8">
-    <div className="star-border pl-6">
-      <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
-      <p className="text-on-surface-variant">I needed real enterprise identity management experience but had no access to a corporate network environment.</p>
-    </div>
-    {/* ... rest of your Action/Result/Reflection code ... */}
   </div>
 </section>
 
