@@ -307,58 +307,67 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
 function AboutScreen() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20">
-      <header className="flex flex-col md:flex-row gap-12 items-center md:items-start mb-16">
-        <div className="w-48 h-48 rounded-xl overflow-hidden bg-surface-container border border-outline-variant shadow-lg">
-          <img src={`${base}aboutme2.jpg`} alt="Virgil Carpenter" className="w-full h-full object-cover" />
-        </div>
-        <div className="text-center md:text-left">
-          <h1 className="text-5xl font-bold text-primary mb-4 text-center md:text-left">About Me</h1>
-          <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-            {['AUGUSTA, GA', 'CYBER ACADEMY OF EXCELLENCE', '10TH GRADE'].map(tag => (
-              <span key={tag} className="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold font-label tracking-wider">{tag}</span>
-            ))}
-          </div>
-        </div>
-      </header>
-
       <div className="grid md:grid-cols-12 gap-12">
-        <div className="md:col-span-8 bg-white p-10 border border-outline-variant rounded-xl shadow-sm space-y-12">
-          <div className="star-border pl-6">
-            <h2 className="text-2xl font-bold text-primary mb-4">Introduction</h2>
-            <p className="text-lg leading-relaxed text-on-surface-variant">
-              I am a 10th-grade student based in Augusta, Georgia, currently attending the Cyber Academy of Excellence and Richmond County Technical Career Magnet School. My academic journey is defined by a rigorous dual-enrollment approach that bridges traditional excellence with specialized technical training. I have cultivated a deep-seated passion for technology repair and network security, viewing every hardware malfunction or network vulnerability as a puzzle requiring a precise, systematic solution.
-            </p>
+        {/* LEFT COLUMN: Header Text and Content */}
+        <div className="md:col-span-8 space-y-12">
+          {/* New Header Placement */}
+          <div className="mb-16 text-left">
+            <h1 className="text-5xl font-bold text-primary mb-4">About Me</h1>
+            <div className="flex flex-wrap gap-3">
+              {['AUGUSTA, GA', 'CYBER ACADEMY OF EXCELLENCE', '10TH GRADE'].map(tag => (
+                <span key={tag} className="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold font-label tracking-wider">{tag}</span>
+              ))}
+            </div>
           </div>
-          <div className="star-border pl-6">
-            <h2 className="text-2xl font-bold text-primary mb-4">Strategic Goals</h2>
-            <p className="leading-relaxed text-on-surface-variant">
-              My immediate professional trajectory is focused on establishing a dominant presence within the cybersecurity landscape. This involves a commitment to lifelong learning through the pursuit of industry-standard certifications and the accumulation of real-world experience. I am actively seeking opportunities to apply my theoretical knowledge in practical environments, ensuring that my growth is both academically grounded and operationally effective.
-            </p>
-          </div>
-          <div className="star-border pl-6">
-            <h2 className="text-2xl font-bold text-primary mb-4">Anticipated Outcomes</h2>
-            <p className="leading-relaxed text-on-surface-variant">
-              Through the projects and certifications I've already earned, I expect to graduate with a set of skills that most students my age don't yet have, practical experience with Active Directory, network troubleshooting, PXE deployment, and security principles that map directly to industry roles. More than credentials, I want to leave school with the problem-solving mindset of a professional: the ability to walk into an unknown situation, ask the right questions, and work through it systematically. Ultimately, I want to contribute to organizations that take security seriously, and I'm building the portfolio and the knowledge base to make that possible from day one.
-            </p>
+
+          {/* Main Content Blocks */}
+          <div className="bg-white p-10 border border-outline-variant rounded-xl shadow-sm space-y-12">
+            <div className="star-border pl-6">
+              <h2 className="text-2xl font-bold text-primary mb-4">Introduction</h2>
+              <p className="text-lg leading-relaxed text-on-surface-variant">
+                I am a 10th-grade student based in Augusta, Georgia, currently attending the Cyber Academy of Excellence and Richmond County Technical Career Magnet School. My academic journey is defined by a rigorous dual-enrollment approach that bridges traditional excellence with specialized technical training. I have cultivated a deep-seated passion for technology repair and network security, viewing every hardware malfunction or network vulnerability as a puzzle requiring a precise, systematic solution.
+              </p>
+            </div>
+            <div className="star-border pl-6">
+              <h2 className="text-2xl font-bold text-primary mb-4">Strategic Goals</h2>
+              <p className="leading-relaxed text-on-surface-variant">
+                My immediate professional trajectory is focused on establishing a dominant presence within the cybersecurity landscape. This involves a commitment to lifelong learning through the pursuit of industry-standard certifications and the accumulation of real-world experience. I am actively seeking opportunities to apply my theoretical knowledge in practical environments, ensuring that my growth is both academically grounded and operationally effective.
+              </p>
+            </div>
+            <div className="star-border pl-6">
+              <h2 className="text-2xl font-bold text-primary mb-4">Anticipated Outcomes</h2>
+              <p className="leading-relaxed text-on-surface-variant">
+                Through the projects and certifications I've already earned, I expect to graduate with a set of skills that most students my age don't yet have, practical experience with Active Directory, network troubleshooting, PXE deployment, and security principles that map directly to industry roles. More than credentials, I want to leave school with the problem-solving mindset of a professional: the ability to walk into an unknown situation, ask the right questions, and work through it systematically. Ultimately, I want to contribute to organizations that take security seriously, and I'm building the portfolio and the knowledge base to make that possible from day one.
+              </p>
+            </div>
           </div>
         </div>
         
+        {/* RIGHT COLUMN: Profile Picture Sidebar */}
         <aside className="md:col-span-4 space-y-6">
-          <div className="bg-primary text-white p-8 rounded-xl shadow-lg sticky top-24">
-            <h3 className="text-xl font-bold mb-6">Technical Focus</h3>
-            <ul className="space-y-6">
-              {[
-                { icon: Shield, label: 'Network Security' },
-                { icon: Wrench, label: 'Tech Repair' },
-                { icon: Terminal, label: 'System Hardening' },
-                { icon: Network, label: 'Diagnostics' }
-              ].map(item => (
-                <li key={item.label} className="flex items-center gap-4">
-                  <item.icon size={20} className="text-on-primary-container" />
-                  <span className="text-[13px] font-label uppercase font-bold tracking-widest">{item.label}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="sticky top-24 space-y-6">
+            {/* Picture replaces Technical Focus */}
+            <div className="w-full aspect-square rounded-xl overflow-hidden bg-surface-container border border-outline-variant shadow-lg">
+              <img src={`${base}aboutme2.jpg`} alt="Virgil Carpenter" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Optional: You can move the Technical Focus list below the picture or remove it */}
+            <div className="bg-primary text-white p-8 rounded-xl shadow-lg">
+              <h3 className="text-xl font-bold mb-6">Technical Focus</h3>
+              <ul className="space-y-6">
+                {[
+                  { icon: Shield, label: 'Network Security' },
+                  { icon: Wrench, label: 'Tech Repair' },
+                  { icon: Terminal, label: 'System Hardening' },
+                  { icon: Network, label: 'Diagnostics' }
+                ].map(item => (
+                  <li key={item.label} className="flex items-center gap-4">
+                    <item.icon size={20} className="text-on-primary-container" />
+                    <span className="text-[13px] font-label uppercase font-bold tracking-widest">{item.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </aside>
       </div>
