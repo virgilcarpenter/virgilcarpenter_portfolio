@@ -4,7 +4,6 @@ import {
   Shield, 
   ShieldCheck, 
   Terminal, 
-  GraduationCap, 
   Bug, 
   Database, 
   Wrench, 
@@ -13,6 +12,8 @@ import {
   Network, 
   FileText, 
   ArrowUpRight,
+  Award,
+  Cloud,
   ExternalLink,
   Download,
   Mail,
@@ -21,7 +22,7 @@ import {
   X
 } from 'lucide-react';
 
-type Screen = 'home' | 'about' | 'education' | 'projects' | 'documents' | 'contact';
+type Screen = 'home' | 'about' | 'education' | 'certifications' | 'projects' | 'experience' | 'contact';
 
 const base = import.meta.env.BASE_URL;
 
@@ -34,7 +35,8 @@ export default function App() {
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
-    { id: 'documents', label: 'Documents' },
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact Me' },
   ];
 
@@ -67,6 +69,15 @@ export default function App() {
             </button>
           ))}
         </div>
+
+        <a
+          href={`${base}resume.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:inline-flex bg-primary text-white px-5 py-2.5 text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity"
+        >
+          Resume
+        </a>
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden">
@@ -102,6 +113,15 @@ export default function App() {
                 </button>
               ))}
             </div>
+
+            <a
+              href={`${base}resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex justify-center bg-primary text-white px-6 py-3 text-sm font-bold uppercase tracking-widest rounded-sm"
+            >
+              Resume
+            </a>
             
             <div className="mt-auto space-y-6">
               <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.2em]">Contact Information</p>
@@ -133,7 +153,8 @@ export default function App() {
             {activeScreen === 'about' && <AboutScreen />}
             {activeScreen === 'education' && <EducationScreen />}
             {activeScreen === 'projects' && <ProjectsScreen />}
-            {activeScreen === 'documents' && <DocumentsScreen />}
+            {activeScreen === 'certifications' && <CertificationsScreen />}
+            {activeScreen === 'experience' && <ExperienceScreen />}
             {activeScreen === 'contact' && <ContactScreen />}
           </motion.div>
         </AnimatePresence>
@@ -261,15 +282,15 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
               <ul className="space-y-4 text-on-primary-container/80">
                 <li className="flex gap-3 items-start">
                   <Bug size={18} className="text-primary-fixed shrink-0 mt-1" />
-                  <span className="text-sm">Virus and malware remediation, OS optimization, and data recovery across diverse platforms.</span>
+                  <span className="text-sm">Malware cleanup, system troubleshooting, and general technical support.</span>
                 </li>
                 <li className="flex gap-3 items-start">
                   <Cpu size={18} className="text-primary-fixed shrink-0 mt-1" />
-                  <span className="text-sm">Advanced hardware diagnostics, precision component replacement, and network infrastructure maintenance.</span>
+                  <span className="text-sm">PC builds and upgrades, hardware troubleshooting, and device setup.</span>
                 </li>
                 <li className="flex gap-3 items-start">
                   <Wrench size={18} className="text-primary-fixed shrink-0 mt-1" />
-                  <span className="text-sm">Troubleshooting connectivity issues and deploying software solutions systematically.</span>
+                  <span className="text-sm">Home and small-office network troubleshooting and connectivity support.</span>
                 </li>
               </ul>
             </div>
@@ -277,11 +298,17 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
             {/* Labs Card */}
             <div className="md:col-span-4 bg-white border border-outline-variant p-8 rounded shadow-sm">
               <span className="text-[12px] font-label text-primary-container bg-surface-container-highest px-3 py-1 rounded-full mb-4 inline-block font-bold">HANDS-ON</span>
-              <h3 className="text-2xl font-bold text-primary mb-6">Network & Systems Labs</h3>
-              <div className="h-32 bg-surface-container rounded mb-4 flex items-center justify-center">
-                 <Network size={40} className="text-secondary opacity-40" />
+              <h3 className="text-2xl font-bold text-primary mb-6">Hands-On Labs</h3>
+              <div className="space-y-3">
+                <div className="border-l-2 border-primary pl-4">
+                  <p className="font-bold text-sm">PXE Deployment Lab</p>
+                  <p className="text-xs text-on-surface-variant mt-1">Network troubleshooting and OS deployment.</p>
+                </div>
+                <div className="border-l-2 border-primary pl-4">
+                  <p className="font-bold text-sm">Enterprise Active Directory Lab</p>
+                  <p className="text-xs text-on-surface-variant mt-1">Identity management and Windows administration.</p>
+                </div>
               </div>
-              <p className="text-on-surface-variant text-sm">Building virtualized lab environments for testing firewall configurations and network intrusion detection systems.</p>
             </div>
 
             {/* Leadership Card */}
@@ -305,6 +332,10 @@ function HomeScreen({ onNavigate }: { onNavigate: (s: Screen) => void }) {
   );
 }
 
+function CloudIcon() {
+  return <Network size={22} className="text-on-primary-container" />;
+}
+
 function AboutScreen() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20">
@@ -315,7 +346,7 @@ function AboutScreen() {
           <div className="mb-16 text-left">
             <h1 className="text-5xl font-bold text-primary mb-4">About Me</h1>
             <div className="flex flex-wrap gap-3">
-              {['AUGUSTA, GA', 'CYBER ACADEMY OF EXCELLENCE', '10TH GRADE'].map(tag => (
+              {['AUGUSTA, GA', 'CYBER ACADEMY OF EXCELLENCE', '11TH GRADE'].map(tag => (
                 <span key={tag} className="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold font-label tracking-wider">{tag}</span>
               ))}
             </div>
@@ -326,7 +357,7 @@ function AboutScreen() {
             <div className="star-border pl-6">
               <h2 className="text-2xl font-bold text-primary mb-4">Introduction</h2>
               <p className="text-lg leading-relaxed text-on-surface-variant">
-                I am a 10th-grade student based in Augusta, Georgia, currently attending the Cyber Academy of Excellence and Richmond County Technical Career Magnet School. My academic journey is defined by a rigorous dual-enrollment approach that bridges traditional excellence with specialized technical training. I have cultivated a deep-seated passion for technology repair and network security, viewing every hardware malfunction or network vulnerability as a puzzle requiring a precise, systematic solution.
+                I am an 11th-grade student based in Augusta, Georgia, currently attending the Cyber Academy of Excellence and Richmond County Technical Career Magnet School. My academic journey is defined by a rigorous dual-enrollment approach that bridges traditional excellence with specialized technical training. I have cultivated a deep-seated passion for technology repair and network security, viewing every hardware malfunction or network vulnerability as a puzzle requiring a precise, systematic solution.
               </p>
             </div>
             <div className="star-border pl-6">
@@ -354,20 +385,14 @@ function AboutScreen() {
 
             {/* Optional: You can move the Technical Focus list below the picture or remove it */}
             <div className="bg-primary text-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Technical Focus</h3>
-              <ul className="space-y-6">
-                {[
-                  { icon: Shield, label: 'Network Security' },
-                  { icon: Wrench, label: 'Tech Repair' },
-                  { icon: Terminal, label: 'System Hardening' },
-                  { icon: Network, label: 'Diagnostics' }
-                ].map(item => (
-                  <li key={item.label} className="flex items-center gap-4">
-                    <item.icon size={20} className="text-on-primary-container" />
-                    <span className="text-[13px] font-label uppercase font-bold tracking-widest">{item.label}</span>
-                  </li>
-                ))}
-              </ul>
+              <h3 className="text-xl font-bold mb-5">Currently Learning</h3>
+              <div className="flex items-center gap-4">
+                <Cloud size={22} className="text-on-primary-container shrink-0" />
+                <div>
+                  <p className="text-[13px] font-label uppercase font-bold tracking-widest">Microsoft Azure</p>
+                  <p className="text-sm text-on-primary-container/80 mt-2">Currently learning Azure and building cloud fundamentals.</p>
+                </div>
+              </div>
             </div>
           </div>
         </aside>
@@ -381,9 +406,9 @@ function EducationScreen() {
     <div className="max-w-7xl mx-auto px-6 py-20">
       <div className="max-w-3xl mb-16">
         <span className="text-primary text-sm font-label font-bold uppercase tracking-[0.2em] mb-4 block">Academic Development</span>
-        <h1 className="text-5xl font-bold text-primary mb-4">Educational Roadmap</h1>
+        <h1 className="text-5xl font-bold text-primary mb-4">Education</h1>
         <p className="text-on-surface-variant leading-relaxed">
-          A structured overview of formal education, specialized cybersecurity training, and technical certifications aimed at mastering infrastructure security.
+          My high school cybersecurity coursework and college dual enrollment.
         </p>
       </div>
 
@@ -415,54 +440,25 @@ function EducationScreen() {
                  <Shield className="text-white" size={24} />
                </div>
                <div>
-                  <h2 className="text-2xl font-bold text-primary">Cyber Security Pathway</h2>
-                  <p className="text-[12px] font-label font-bold tracking-widest text-on-surface-variant">CORE ACADEMIC CURRICULUM</p>
+                  <h2 className="text-2xl font-bold text-primary">Cybersecurity Coursework</h2>
+                  <p className="text-[12px] font-label font-bold tracking-widest text-on-surface-variant">HIGH SCHOOL COURSEWORK</p>
                </div>
              </div>
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative ml-6">
                 {[
-                  { code: 'RCTCM', title: 'Advanced Cybersecurity', desc: 'Career-focused cybersecurity coursework through the Richmond County Technical Career Magnet School.', tags: ['Cybersecurity', 'RCTCM'] },
-                  { code: 'RCTCM', title: 'Intro Business & Technology', desc: 'Business and technology coursework through the Richmond County Technical Career Magnet School.', tags: ['Business', 'Technology'] },
-                ].map((course, index) => (
-                  <div key={`${course.code}-${index}`} className="bg-white p-6 border border-outline-variant hover:border-primary transition-colors">
-                    <span className="text-[10px] font-bold text-primary mb-2 block">{course.code}</span>
+                  { title: 'Intro to Hardware Technology', desc: 'Foundations of computer hardware, components, and troubleshooting.' },
+                  { title: 'Networking Fundamentals', desc: 'Foundations of networking, connectivity, and network troubleshooting.' },
+                  { title: 'Intro to Cybersecurity', desc: 'Foundational cybersecurity concepts, threats, vulnerabilities, and defensive practices.' },
+                  { title: 'Advanced Cybersecurity', desc: 'Advanced cybersecurity concepts and hands-on defensive work.' },
+                  { title: 'Networking Systems and Support', desc: 'Current coursework focused on networking systems and technical support.' },
+                  { title: 'Intro to Business Technology', desc: 'Foundational business technology and workplace technology skills.' },
+                ].map(course => (
+                  <div key={course.title} className="bg-white p-6 border border-outline-variant hover:border-primary transition-colors">
                     <h4 className="text-lg font-bold mb-3">{course.title}</h4>
-                    <p className="text-sm text-on-surface-variant mb-6">{course.desc}</p>
-                    <div className="flex gap-2">
-                       {course.tags.map(tag => (
-                         <span key={tag} className="text-[9px] bg-secondary-container px-2 py-1 font-bold uppercase">{tag}</span>
-                       ))}
-                    </div>
+                    <p className="text-sm text-on-surface-variant">{course.desc}</p>
                   </div>
                 ))}
-             </div>
-          </div>
-
-          <div className="space-y-12">
-             <div className="flex items-center gap-4 mb-8">
-               <div className="w-12 h-12 bg-primary flex items-center justify-center">
-                 <GraduationCap className="text-white" size={24} />
-               </div>
-               <div>
-                  <h2 className="text-2xl font-bold text-primary">Augusta Technical College</h2>
-                  <p className="text-[12px] font-label font-bold tracking-widest text-on-surface-variant">DUAL ENROLLMENT</p>
-               </div>
-             </div>
-
-             <div className="ml-6">
-               <div className="bg-white border border-outline-variant p-8">
-                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                   <div>
-                     <h4 className="text-2xl font-bold text-primary">Beginning Python Programming</h4>
-                     <p className="text-xs font-bold text-secondary uppercase tracking-widest mt-1">CIST 2742</p>
-                   </div>
-                   <span className="bg-primary-container text-on-primary-container px-3 py-1 font-bold text-[10px] uppercase tracking-widest rounded-full">Dual Enrollment</span>
-                 </div>
-                 <p className="text-sm text-on-surface-variant leading-relaxed">
-                   College-level introductory Python programming coursework completed through Augusta Technical College.
-                 </p>
-               </div>
              </div>
           </div>
 
@@ -524,7 +520,7 @@ function ProjectsScreen() {
         <section className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
-              <h2 className="text-3xl font-bold text-primary">Classroom Network Diagnostics & PXE Deployment</h2>
+              <h2 className="text-3xl font-bold text-primary">PXE Deployment Lab</h2>
               <span className="text-sm font-bold text-secondary-fixed bg-secondary-container px-3 py-1 rounded">MARCH 2025</span>
             </div>
             <p className="text-sm text-on-surface-variant mb-6 font-medium">Cyber Academy of Excellence – Augusta, GA • Collaborators: Virgil Carpenter, Jason Williams</p>
@@ -635,241 +631,115 @@ function ProjectsScreen() {
   </div>
 </section>
 
-        {/* Project 3 */}
-        <section className="grid lg:grid-cols-12 gap-12 items-start pt-20 border-t border-outline-variant/30">
-          <div className="lg:col-span-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
-              <h2 className="text-3xl font-bold text-primary">Network & Systems Labs</h2>
-              <span className="text-sm font-bold text-secondary-fixed bg-secondary-container px-3 py-1 rounded">JANUARY 2026</span>
-            </div>
-            <div className="h-1 w-20 bg-primary mb-12"></div>
-          </div>
-          <div className="lg:col-span-5">
-             <div className="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <img src={`${base}fiberobtic.jpg`} alt="Network Lab" className="w-full h-full object-cover" />
-             </div>
-             <div className="flex flex-wrap gap-2">
-                {['pfSense', 'IDS/IPS', 'NETWORK SEGMENTATION', 'VIRTUALIZATION'].map(tag => (
-                  <span key={tag} className="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] font-bold tracking-widest">{tag}</span>
-                ))}
-             </div>
-          </div>
-          <div className="lg:col-span-7 space-y-8">
-             <div className="star-border pl-6">
-               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Situation</h3>
-               <p className="text-on-surface-variant">Needed a secure, isolated environment to test advanced firewall rules and network security configurations without risking production data or personal hardware.</p>
-             </div>
-             <div className="star-border pl-6">
-               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Action</h3>
-               <p className="text-on-surface-variant">Architected a multi-layered virtual network using pfSense for firewalling and Snort for Intrusion Detection (IDS). Configured VLANs to segment traffic and established strict rule-sets to monitor and block malicious patterns.</p>
-             </div>
-             <div className="star-border pl-6">
-               <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Result</h3>
-               <p className="text-on-surface-variant">Successfully virtualized a complex network architecture that allows for rapid security prototyping. Validated the setup by simulating common network attacks and confirming the IDS triggered appropriate alerts and blocks.</p>
-             </div>
-             <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
-               <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-2 flex items-center gap-2">
-                 <Shield size={14} /> Reflection
-               </h4>
-               <p className="text-sm italic text-on-surface-variant leading-relaxed">
-                 "This project reinforced that defense-in-depth is the only reliable security posture. Configured firewalls are the first line of defense, but the IDS/IPS layer provides the 'eyes' needed to understand what's actually hitting your perimeter. It also taught me that network segmentation is often the most effective way to limit a blast radius in any security event."
-               </p>
-             </div>
-          </div>
-        </section>
       </div>
     </div>
   );
 }
-function DocumentsScreen() {
-  const documents = [
-    {
-      id: 'resume',
-      title: 'Professional Resume',
-      subtitle: 'Cybersecurity & Tech Specialist',
-      date: 'Updated April 2026',
-      size: '72 KB',
-      preview: `${base}resume.jpg`,
-      pdf: `${base}resume.pdf`,
-      fallback: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop',
-      details: [
-        'Security+ 701 Certified',
-        'GPA: 93.67',
-        'Python Essentials 1',
-        'Cisco Networking Academy'
-      ]
-    }, {
-      id: 'cover-letter',
-      title: 'Cover Letter',
-      subtitle: 'Application for Computer Aide',
-      date: 'April 2026',
-      size: '54 KB',
-      preview: `${base}coverletter.jpg`,
-      pdf: `${base}coverletter.pdf`,
-      fallback: 'https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=800&auto=format&fit=crop',
-      details: [
-        'Tailored for NSA',
-        'Cyber Academy focus',
-        'Technical aptitude',
-        'Personal statement'
-      ]
-    }, {
-      id: 'security-plus',
-      title: 'CompTIA Security+',
-      subtitle: 'Technical Certification (701)',
-      date: 'Earned April 2026',
-      size: '190 KB',
-      preview: `${base}sec+.jpg`,
-      pdf: `${base}sec+.pdf`,
-      fallback: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop',
-      details: [
-        'Network Security',
-        'Compliance & Operations',
-        'Threats & Vulnerabilities',
-        'Application Security'
-      ]
-    }, {
-      id: 'python-cert',
-      title: 'Python Essentials 1',
-      subtitle: 'Cisco Networking Academy',
-      date: 'Earned April 2026',
-      size: '1.2 MB',
-      preview: `${base}certificate.jpg`,
-      pdf: `${base}certificate.pdf`,
-      fallback: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop',
-      details: [
-        'Programming Fundamentals',
-        'Automation & Scripting',
-        'Logic & Algorithms',
-        'Network Programmability'
-      ]
-    }
-  ];
 
+function CertificationsScreen() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20">
-      <header className="max-w-3xl border-l-4 border-primary pl-6 mb-20">
-        <h1 className="text-5xl font-bold text-primary mb-4 text-center md:text-left">Achievements & Documents</h1>
-        <p className="text-lg text-on-surface-variant text-center md:text-left">A compilation of technical certifications, academic performance, and professional documentation.</p>
+      <header className="max-w-3xl border-l-4 border-primary pl-6 mb-16">
+        <h1 className="text-5xl font-bold text-primary mb-4">Certifications</h1>
+        <p className="text-lg text-on-surface-variant">Industry certification and technical training I have completed.</p>
       </header>
 
-      <section className="grid md:grid-cols-12 gap-8 mb-20">
-        <div className="md:col-span-8 bg-white border border-outline-variant p-10 shadow-sm transition-transform hover:translate-y-[-4px]">
-           <h3 className="text-sm font-label font-bold text-secondary uppercase tracking-widest mb-8">Academic & Technical Achievements</h3>
-           <div className="space-y-8">
-             <div className="bg-surface-container/30 p-6 rounded border-l-4 border-primary">
-               <div className="flex justify-between items-start mb-4">
-                 <div>
-                   <h4 className="text-xl font-bold">HUB Youth Leadership Academy</h4>
-                   <p className="text-sm font-bold text-primary uppercase tracking-widest mt-1">Class of 2026-2027 Academy Explorers</p>
-                 </div>
-                 <span className="bg-secondary-container text-on-secondary-container px-3 py-1 font-bold text-[10px] uppercase tracking-tighter rounded">Accepted</span>
-               </div>
-               <p className="text-sm text-on-surface-variant leading-relaxed">
-                 Selected for a competitive leadership program aimed at the area's brightest future leaders. The academy focuses on developing community awareness, professional business etiquette, and advanced leadership skills through a structured curriculum including financial literacy, technology, healthcare, and government engagement.
-               </p>
-             </div>
-             <div className="flex justify-between items-center bg-surface-container/30 p-4 rounded border-l-4 border-primary">
-               <div>
-                 <h4 className="text-xl font-bold">CompTIA Security+ 701</h4>
-                 <p className="text-sm text-on-surface-variant">Global security validation baseline</p>
-               </div>
-               <span className="bg-primary-fixed text-on-primary-fixed px-3 py-1 font-bold text-[10px] uppercase tracking-tighter">Certified</span>
-             </div>
-             <div className="flex justify-between items-center bg-surface-container/30 p-4 rounded border-l-4 border-primary">
-               <div>
-                 <h4 className="text-xl font-bold">Cisco Python Essentials 1</h4>
-                 <p className="text-sm text-on-surface-variant">Network automation programming</p>
-               </div>
-               <span className="bg-primary-fixed text-on-primary-fixed px-3 py-1 font-bold text-[10px] uppercase tracking-tighter">Completed</span>
-             </div>
-           </div>
+      <div className="grid lg:grid-cols-2 gap-10">
+        <div className="bg-white border border-outline-variant p-8 rounded-lg shadow-sm">
+          <div className="flex items-start justify-between gap-6 mb-6">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-primary">Certified</span>
+              <h2 className="text-3xl font-bold text-primary mt-2">CompTIA Security+ 701</h2>
+              <p className="text-sm text-on-surface-variant mt-2">Earned April 2026</p>
+            </div>
+            <ShieldCheck size={38} className="text-primary shrink-0" />
+          </div>
+          <div className="border border-outline-variant bg-surface-container p-3 mb-6">
+            <img src={`${base}sec+.jpg`} alt="CompTIA Security+ certificate" className="w-full h-auto object-contain" />
+          </div>
+          <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
+            CompTIA Security+ is my first industry cybersecurity certification and represents the foundation I have built across security concepts, threats, vulnerabilities, and defensive practices.
+          </p>
+          <a href={`${base}sec+.pdf`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
+            View Certificate <ExternalLink size={14} />
+          </a>
         </div>
 
-        <div className="md:col-span-4 bg-primary text-white p-10 flex flex-col justify-between shadow-xl">
-           <h3 className="text-sm font-label font-bold uppercase tracking-widest opacity-60">Academic Standing</h3>
-           <div>
-             <div className="text-6xl font-bold mb-2 tracking-tighter">93.67</div>
-             <p className="text-xs font-bold font-label tracking-widest opacity-50 uppercase">Unweighted GPA</p>
-           </div>
-           <div className="pt-8 border-t border-white/20 mt-8">
-             <p className="font-bold text-lg">Cyber Academy of Excellence</p>
-             <p className="text-xs opacity-60">Class of 2026</p>
-           </div>
+        <div className="bg-white border border-outline-variant p-8 rounded-lg shadow-sm h-fit">
+          <span className="text-[11px] font-bold uppercase tracking-widest text-secondary">Technical Training</span>
+          <h2 className="text-3xl font-bold text-primary mt-2">Python Essentials 1</h2>
+          <p className="text-sm text-on-surface-variant mt-2">Cisco Networking Academy · Certificate of Completion</p>
+          <p className="text-sm text-on-surface-variant leading-relaxed mt-6">
+            Completed Python Essentials 1 to build a foundation in programming, scripting, and logical problem-solving.
+          </p>
+          <a href={`${base}certificate.pdf`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 text-sm font-bold text-primary hover:underline">
+            View certificate <ExternalLink size={15} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExperienceScreen() {
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-20">
+      <header className="max-w-3xl mb-16">
+        <span className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4 block">Experience</span>
+        <h1 className="text-5xl font-bold text-primary mb-4">Technical Experience</h1>
+        <p className="text-lg text-on-surface-variant leading-relaxed">Hands-on technical experience built through school IT work, troubleshooting, and independent technology support.</p>
+      </header>
+
+      <div className="grid lg:grid-cols-2 gap-8">
+        <div className="bg-white border border-outline-variant p-8 rounded-lg shadow-sm">
+          <div className="flex items-center gap-4 mb-6">
+            <Wrench className="text-primary" size={28} />
+            <div>
+              <h2 className="text-2xl font-bold text-primary">IT Support & Troubleshooting</h2>
+              <p className="text-xs font-bold uppercase tracking-widest text-secondary mt-1">School-based experience</p>
+            </div>
+          </div>
+          <ul className="space-y-3 text-sm text-on-surface-variant leading-relaxed list-disc list-inside">
+            <li>Troubleshoot classroom computers, Ethernet connectivity, and software issues.</li>
+            <li>Assist with PC hardware, upgrades, and system setup.</li>
+            <li>Worked with PXE deployment and network-based operating system imaging.</li>
+            <li>Built hands-on experience with Active Directory and Windows administration labs.</li>
+          </ul>
+        </div>
+
+        <div className="bg-white border border-outline-variant p-8 rounded-lg shadow-sm">
+          <div className="flex items-center gap-4 mb-6">
+            <Cpu className="text-primary" size={28} />
+            <div>
+              <h2 className="text-2xl font-bold text-primary">Independent Technical Support</h2>
+              <p className="text-xs font-bold uppercase tracking-widest text-secondary mt-1">Independent / family & small-office support</p>
+            </div>
+          </div>
+          <ul className="space-y-3 text-sm text-on-surface-variant leading-relaxed list-disc list-inside">
+            <li>Help troubleshoot laptops, desktops, phones, consoles, and other personal technology.</li>
+            <li>Build and upgrade PCs and diagnose hardware problems.</li>
+            <li>Configure and troubleshoot home and small-office networks.</li>
+            <li>Assist with malware cleanup and general system troubleshooting.</li>
+          </ul>
+        </div>
+      </div>
+
+      <section className="mt-16 border-t border-outline-variant pt-12">
+        <div className="flex items-center gap-3 mb-8">
+          <Award className="text-primary" size={24} />
+          <h2 className="text-3xl font-bold text-primary">Activities</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white border border-outline-variant p-7 rounded-lg">
+            <h3 className="text-xl font-bold text-primary">CyberPatriot</h3>
+            <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">Cybersecurity competition experience involving system security, vulnerability identification, and defensive troubleshooting.</p>
+          </div>
+          <div className="bg-white border border-outline-variant p-7 rounded-lg">
+            <h3 className="text-xl font-bold text-primary">Be Pro Be Proud</h3>
+            <p className="mt-3 text-sm text-on-surface-variant leading-relaxed">Volunteer and mentoring experience supporting students through hands-on career and technical activities.</p>
+          </div>
         </div>
       </section>
-
-      <h2 className="text-2xl font-bold text-primary mb-12 flex items-center gap-4">
-        Official Files
-        <div className="h-px bg-outline-variant flex-1"></div>
-      </h2>
-      
-      <div className="grid lg:grid-cols-2 gap-12">
-        {documents.map((doc) => (
-          <div key={doc.id} className="bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition-all duration-500">
-             <div className="w-full md:w-64 aspect-[3/4] bg-white relative overflow-hidden shrink-0 border-r border-outline-variant flex items-center justify-center">
-                <img 
-                  src={doc.preview} 
-                  alt={doc.title} 
-                  className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700 relative z-10"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    const fallback = (doc as any).fallback;
-                    if (fallback && !target.src.includes(fallback)) {
-                      target.src = fallback;
-                    } else {
-                      target.style.opacity = '0.2';
-                    }
-                  }}
-                />
-               <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
-               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-xl scale-0 group-hover:scale-100 transition-transform duration-500">
-                    <FileText size={24} />
-                  </div>
-               </div>
-             </div>
-
-             <div className="flex-1 p-8 flex flex-col">
-                <div className="flex justify-between items-start mb-4">
-                   <div>
-                     <h3 className="text-2xl font-bold text-primary tracking-tight">{doc.title}</h3>
-                     <p className="text-xs font-bold font-label text-secondary uppercase tracking-[0.1em] mt-1">{doc.subtitle}</p>
-                   </div>
-                   <span className="text-[10px] font-bold bg-surface-container-highest px-2 py-1 rounded">{doc.size}</span>
-                </div>
-
-                <div className="space-y-3 mb-8 flex-1">
-                   {doc.details.map((detail, i) => (
-                     <div key={i} className="flex items-center gap-2 text-sm text-on-surface-variant">
-                       <div className="w-1.5 h-1.5 rounded-full bg-primary/30"></div>
-                       {detail}
-                     </div>
-                   ))}
-                   <p className="text-[10px] text-secondary font-bold uppercase tracking-widest pt-4 italic border-t border-outline-variant/30">{doc.date}</p>
-                </div>
-
-                 <div className="grid grid-cols-2 gap-3">
-                   <a 
-                     href={doc.pdf || doc.preview}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="bg-primary text-white py-3 font-bold text-[11px] uppercase tracking-widest flex items-center justify-center gap-2 transition-all hover:bg-primary-container"
-                   >
-                     <ExternalLink size={14} /> View PDF
-                   </a>
-                   <a 
-                     href={doc.pdf || doc.preview}
-                     download={doc.pdf?.split('/').pop() || doc.preview.split('/').pop()}
-                     className="border-2 border-primary text-primary py-3 font-bold text-[11px] uppercase tracking-widest flex items-center justify-center gap-2 transition-all hover:bg-primary hover:text-white"
-                   >
-                     <Download size={14} /> Download
-                   </a>
-                </div>
-             </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
