@@ -652,19 +652,23 @@ function DocumentsScreen() {
       <div className="grid lg:grid-cols-3 gap-8">
         {documents.map((document) => (
           <article key={document.title} className="bg-white border border-outline-variant rounded-lg shadow-sm overflow-hidden">
-            <a
-              href={document.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-surface-container border-b border-outline-variant aspect-[8.5/11] overflow-hidden group"
-              aria-label={`Open ${document.title} in a new tab`}
-            >
-              <img
-                src={document.preview}
-                alt={`${document.title} preview`}
-                className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
-              />
-            </a>
+            <div className="bg-surface-container border-b border-outline-variant w-full aspect-[8.5/11] overflow-hidden">
+              <a href={document.pdf} target="_blank" rel="noopener noreferrer" className="block w-full h-full group" aria-label={`Open ${document.title} in a new tab`}>
+                <img
+                  src={document.preview}
+                  alt={`${document.title} preview`}
+                  className="block w-full h-full object-contain bg-white group-hover:scale-[1.02] transition-transform duration-300"
+                  loading="lazy"
+                  onError={(event) => {
+                    const image = event.currentTarget;
+                    image.style.display = 'none';
+                    const fallback = image.parentElement?.querySelector('[data-pdf-fallback]') as HTMLElement | null;
+                    if (fallback) fallback.style.display = 'block';
+                  }}
+                />
+                <iframe src={document.pdf} title={`${document.title} PDF preview`} data-pdf-fallback className="hidden w-full h-full bg-white" />
+              </a>
+            </div>
 
             <div className="p-6">
               <h2 className="text-2xl font-bold text-primary">{document.title}</h2>
