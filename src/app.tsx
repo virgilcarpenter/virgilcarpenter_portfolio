@@ -22,7 +22,7 @@ import {
   X
 } from 'lucide-react';
 
-type Screen = 'home' | 'about' | 'education' | 'certifications' | 'projects' | 'experience' | 'contact';
+type Screen = 'home' | 'about' | 'education' | 'certifications' | 'projects' | 'documents' | 'experience' | 'contact';
 
 const base = import.meta.env.BASE_URL;
 
@@ -35,6 +35,7 @@ export default function App() {
     { id: 'about', label: 'About' },
     { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
+    { id: 'documents', label: 'Documents' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact Me' },
@@ -69,15 +70,6 @@ export default function App() {
             </button>
           ))}
         </div>
-
-        <a
-          href={`${base}resume.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex bg-primary text-white px-5 py-2.5 text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity"
-        >
-          Resume
-        </a>
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden">
@@ -114,15 +106,6 @@ export default function App() {
               ))}
             </div>
 
-            <a
-              href={`${base}resume.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex justify-center bg-primary text-white px-6 py-3 text-sm font-bold uppercase tracking-widest rounded-sm"
-            >
-              Resume
-            </a>
-            
             <div className="mt-auto space-y-6">
               <p className="text-[10px] font-bold text-secondary uppercase tracking-[0.2em]">Contact Information</p>
               <div className="flex flex-col gap-4">
@@ -153,6 +136,7 @@ export default function App() {
             {activeScreen === 'about' && <AboutScreen />}
             {activeScreen === 'education' && <EducationScreen />}
             {activeScreen === 'projects' && <ProjectsScreen />}
+            {activeScreen === 'documents' && <DocumentsScreen />}
             {activeScreen === 'certifications' && <CertificationsScreen />}
             {activeScreen === 'experience' && <ExperienceScreen />}
             {activeScreen === 'contact' && <ContactScreen />}
@@ -631,6 +615,81 @@ function ProjectsScreen() {
   </div>
 </section>
 
+      </div>
+    </div>
+  );
+}
+
+function DocumentsScreen() {
+  const documents = [
+    {
+      title: 'Resume',
+      subtitle: 'Current professional resume',
+      preview: `${base}resume.png`,
+      pdf: `${base}resume.pdf`,
+    },
+    {
+      title: 'Cover Letter',
+      subtitle: 'Professional cover letter',
+      preview: `${base}coverletter.png`,
+      pdf: `${base}coverletter.pdf`,
+    },
+    {
+      title: 'Letter of Recommendation',
+      subtitle: 'Professional recommendation',
+      preview: `${base}letterofrecommendation.png`,
+      pdf: `${base}letterofrecommendation.pdf`,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-20">
+      <header className="max-w-3xl border-l-4 border-primary pl-6 mb-16">
+        <h1 className="text-5xl font-bold text-primary mb-4">Documents</h1>
+        <p className="text-lg text-on-surface-variant">Professional documents and application materials.</p>
+      </header>
+
+      <div className="grid lg:grid-cols-3 gap-8">
+        {documents.map((document) => (
+          <article key={document.title} className="bg-white border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+            <a
+              href={document.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-surface-container border-b border-outline-variant aspect-[8.5/11] overflow-hidden group"
+              aria-label={`Open ${document.title} in a new tab`}
+            >
+              <img
+                src={document.preview}
+                alt={`${document.title} preview`}
+                className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+              />
+            </a>
+
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-primary">{document.title}</h2>
+              <p className="text-sm text-on-surface-variant mt-2 mb-6">{document.subtitle}</p>
+
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={document.pdf}
+                  download
+                  className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2.5 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity"
+                >
+                  Download <Download size={14} />
+                </a>
+                <a
+                  href={document.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-outline-variant text-primary px-4 py-2.5 text-xs font-bold uppercase tracking-widest hover:border-primary transition-colors"
+                >
+                  Open in New Tab <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );
